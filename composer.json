@@ -1,0 +1,33 @@
+{
+    "name": "lsd/cursophp",
+    "description": "Curso de PHP",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "system\\": "system/"
+        }, 
+        "files": [
+            "system/configuration.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Sofia Bakayim",
+            "email": "sofia.bakayim@gmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Equipa de qualidade",
+            "email": "qualidade@empresa.pt",
+            "role": "Quality"
+        }
+        ],
+        "minimum-stability": "dev",
+        "require": {
+            "php": ">=8.1",
+        "carloswph/valium-pt": "dev-main",
+        "pecee/simple-router": "dev-master",
+        "twig/twig": "^3.0"
+           
+        }
+}

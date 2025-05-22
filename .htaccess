@@ -1,0 +1,15 @@
+#ocultar a exibicao de diretorios
+Options -indexes
+
+#URL amigaveis - modulo re_write deve estar ativo
+RewriteEngine On
+
+#URL base do projeto
+RewriteBase "/"
+
+#reescrita de URL
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-l
+
+RewriteRule ^(.*)$ index.php/$1 [L]
