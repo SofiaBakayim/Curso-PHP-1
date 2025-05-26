@@ -12,7 +12,14 @@
     <!-- Css personalizado -->
     <link rel="stylesheet" href="templates/assets/css/site.css">
 
-    <title>Base</title>
+    <title>
+        {% if titulo %}
+        {{ titulo }}
+        {% else %}
+        {{ constant('SITE_NOME')}}
+        {% endif %}
+
+    </title>
 </head>
 
 <body>

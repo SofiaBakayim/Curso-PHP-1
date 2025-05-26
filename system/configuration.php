@@ -2,7 +2,7 @@
 //echo "<h2> Ficheiro de configuração</h2>";
 
 //fuso horário
-date_default_timezone_set("America/Sao_Paulo");
+date_default_timezone_set("Europe/Lisbon");
 
 /* Definicao de constantes ***/
 define("SITE_NOME", "Blog de estudo de IA");

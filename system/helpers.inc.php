@@ -1,6 +1,8 @@
 <?php
 
-echo "<h2> Ficheiro de funções</h2>";
+namespace system\core;
+
+class Helpers{
 /**
  * Função Saudacao
  * @author paulosilvasantos <paulosilvasantos@gmail.com>
@@ -8,7 +10,9 @@ echo "<h2> Ficheiro de funções</h2>";
  * @version 1.0
  * @since 07/04/2025 
  */
-function saudacao():string
+ 
+public static function saudacao():string
+
  {
     $hora = date("H");
     $mensagem = "";
@@ -60,6 +64,4 @@ function saudacao():string
     echo print_r($_SERVER);
     echo "</pre>";
   }
-
-
-
+}

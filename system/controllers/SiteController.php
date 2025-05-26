@@ -47,4 +47,10 @@ class SiteController extends Controller{
         echo "<h1 style='color: blue;'>Formulário de Registo</h1> ";
        
     }
+    public function erro404(){
+        echo $this->template->renderizar('404.html', [
+            'titulo' => 'Pagina não Econtrada, VOLTA PARA TRÁS PAH!!',
+            'subtitulo' => 'A Página que querias não existe, capitché?!'
+        ]);   
+    }
 }
