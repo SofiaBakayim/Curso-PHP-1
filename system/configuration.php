@@ -16,3 +16,8 @@ const URL_DESENVOLVIMENTO = "http://cursophp.localhost";
 
 
 //Acesso a base de dados
+define("DB_HOST", "localhost");
+define("DB_PORT", "3306");
+define("DB_NAME", "CursoPHP");
+define("DB_USER", "root");
+define("DB_PASSWORD", "123456789Abc");

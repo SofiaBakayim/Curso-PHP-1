@@ -4,6 +4,7 @@
 namespace system\controllers;
 
 use system\core\Controller;
+use system\model\PostModel;
 
 class SiteController extends Controller{
 
@@ -13,11 +14,14 @@ class SiteController extends Controller{
     }
     public function index(){
         //echo "<h1 style='color: blue;'>Página Inicial</h1> ";
+        $posts = (new PostModel())->buscarPosts();
+        
         echo $this->template->renderizar('index.html', [
             'titulo' => 'Pagina inicial com Twig',
             'subtitulo' => 'Subtitulo da pagina inicial Twig',
             'descricao' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
             'data' => date('d/m/Y H:i:s'),
+            'posts' => $posts
         ]);
        
     }
@@ -52,5 +56,20 @@ class SiteController extends Controller{
             'titulo' => 'Pagina não Econtrada, VOLTA PARA TRÁS PAH!!',
             'subtitulo' => 'A Página que querias não existe, capitché?!'
         ]);   
+
+    }
+
+    public function post(int $ID){
+        //Istanciar o modelo PostModel
+        $artigo = (new PostModel())->buscarPostsPorID($ID);
+        //if(!post){
+            //Rederecionar para a página de erro 404
+           // $this->erro404();
+            //return;
+        //}
+       echo $this->template->renderizar('post.html', [
+            'titulo' => 'Post',
+            'artigo' => $artigo
+        ]);
     }
 }

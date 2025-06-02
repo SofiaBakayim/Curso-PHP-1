@@ -1,17 +1,31 @@
-   {% extends "base.html" %}
-   {% block conteudo %}
+{% extends "base.html" %}
+{% block conteudo %}
 
-   <div class="container py-5">
-   
+<div class="container py-5">
+
    <!--main-->
    <h6>{{ saudacao() }}</h6>
 
    <h1>{{ titulo }}</h1>
    <h2>{{ subtitulo }}</h2>
-   <p>{{ descricao }}</p>
-   <p>data: {{data}}</p>
+   <!--<p>{{ descricao }}</p>
+   <p>data: {{data}}</p> -->
 
+   <div class="row">
+      {% for post in posts %}
+      <div class="col-md-4">
+      <div class="card mb-4">
+         <div class="card-body py-3 px-3">
+            <h5 class="card-title">{{ post.Titulo}}</h5>
+            <p class="card-text">{{ post.Texto | slice(0, 200) ~'...'}}</p>
+            <a href="{{ url('post/'~post.ID)}}" class="btn btn-danger">Ler mais...</a>
+         </div>
+      </div>
+      </div>
+
+      {% endfor %}
    </div>
 
-    {% endblock %}
+</div>
 
+{% endblock %}

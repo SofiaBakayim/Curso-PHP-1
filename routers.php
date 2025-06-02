@@ -20,6 +20,9 @@ SimpleRouter::get('/registo', 'SiteController@registo');//classe@metodo
 //rota de erro 404
 SimpleRouter::get('/404', 'SiteController@erro404');
 
+//exibir posts por ID nas views
+SimpleRouter::get( '/post/{ID}', 'SiteController@post');
+
 //--fim de rotas
 SimpleRouter::start();
 
@@ -27,7 +30,8 @@ SimpleRouter::start();
 
 catch(Pecee\SimpleRouter\Exceptions\NotFoundHttpException $e){
     ///rederecionar para a página de erro 404
-    SimpleRouter::response()->redirect('/404');
+    //SimpleRouter::response()->redirect('/404');
+    echo $e;
 }
 
 /*catch(Exception $e)
