@@ -5,6 +5,7 @@ namespace system\controllers;
 
 use system\core\Controller;
 use system\model\PostModel;
+use system\model\CategoriaModel;
 
 class SiteController extends Controller{
 
@@ -17,11 +18,10 @@ class SiteController extends Controller{
         $posts = (new PostModel())->buscarPosts();
         
         echo $this->template->renderizar('index.html', [
-            'titulo' => 'Pagina inicial com Twig',
-            'subtitulo' => 'Subtitulo da pagina inicial Twig',
-            'descricao' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            'data' => date('d/m/Y H:i:s'),
-            'posts' => $posts
+            'titulo' => 'Pagina inicial',
+            'subtitulo' => 'Últimos posts do site',
+            'posts' => $posts,
+            'categorias' => $this->categorias()
         ]);
        
     }
@@ -70,6 +70,21 @@ class SiteController extends Controller{
        echo $this->template->renderizar('post.html', [
             'titulo' => 'Post',
             'artigo' => $artigo
+        ]);
+    }
+
+    public function categorias():array{
+        return (new CategoriaModel())->buscarCategorias();
+    }
+
+    public function categoria(int $ID_Categoria){
+        //echo $ID_Categoria;
+        $posts = (new CategoriaModel())->postsPorCategoria($ID_Categoria);
+        //var_dump($posts);
+        echo $this->template->renderizar('categoria.html', [
+            'titulo' => 'Posts da Categoria' . (new CategoriaModel())->buscaNomeCategoria($ID_Categoria),
+            'posts' => $posts,
+            'categorias' => $this->categorias()
         ]);
     }
 }

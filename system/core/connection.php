@@ -30,8 +30,8 @@ class Connection  //Só dá uma por pessoa, objetos. Têm que se criar classes
                 //Lanca uma exceção em caso de erro na conexão
                 die("Erro ao connectar ao banco de dados: " . $e->getMessage());//Mostra a sms ao utilizador do erro e depois vai parar execução do cógio
             }
-            return self::$instancia;
         }
+        return self::$instancia;
     }
     
     //retorna a instancia já criada

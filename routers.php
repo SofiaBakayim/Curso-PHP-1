@@ -23,6 +23,9 @@ SimpleRouter::get('/404', 'SiteController@erro404');
 //exibir posts por ID nas views
 SimpleRouter::get( '/post/{ID}', 'SiteController@post');
 
+//Exibirpost por categorias
+SimpleRouter::get( '/categoria/{ID}', 'SiteController@categoria');
+
 //--fim de rotas
 SimpleRouter::start();
 

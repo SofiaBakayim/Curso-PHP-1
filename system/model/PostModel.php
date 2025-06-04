@@ -10,7 +10,7 @@ class PostModel{
         $query = "SELECT * FROM 
                     Tb_Posts
                   WHERE
-                  status = 0 
+                  status = 1 
                   ORDER BY
                     ID ASC";
         $stmt = Connection::getInstancia()->query( $query);
