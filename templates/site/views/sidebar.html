@@ -2,9 +2,10 @@
 
 <ul class="list-group list-group-flush">
     {% for categoria in categorias %}
-    <li class="list-group-item"> 
+    <li class="list-group-item {% if ID == categoria.ID %} fw-bold text-uppercase {% endif %}"> <!-- quando queremos usar o if coloca-se %%-->
         <i class="bi bi-folder2-open"></i>
-        <a href="{{ url('categoria/'~categoria.ID)}}">{{ categoria.Titulo }}</a>
+        <a href="{{ url('categoria/'~categoria.ID)}}" style="text-decoration: none; color: rgb(224, 100, 28); ">{{
+            categoria.Titulo }}</a>
     </li>
     {% endfor %}
 </ul>

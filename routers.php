@@ -26,6 +26,9 @@ SimpleRouter::get( '/post/{ID}', 'SiteController@post');
 //Exibirpost por categorias
 SimpleRouter::get( '/categoria/{ID}', 'SiteController@categoria');
 
+//newsletter
+SimpleRouter::get( '/registarNewsletter', 'SiteController@registarNewsletter');
+
 //--fim de rotas
 SimpleRouter::start();
 

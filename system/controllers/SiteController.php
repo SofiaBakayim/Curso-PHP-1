@@ -6,6 +6,7 @@ namespace system\controllers;
 use system\core\Controller;
 use system\model\PostModel;
 use system\model\CategoriaModel;
+use system\model\NewsletterModel;
 
 class SiteController extends Controller{
 
@@ -84,7 +85,47 @@ class SiteController extends Controller{
         echo $this->template->renderizar('categoria.html', [
             'titulo' => 'Posts da Categoria' . (new CategoriaModel())->buscaNomeCategoria($ID_Categoria),
             'posts' => $posts,
-            'categorias' => $this->categorias()
+            'categorias' => $this->categorias(), 
+            'ID' => $ID_Categoria
         ]);
+    }
+
+    //registarNewsletter
+    public function registarNewsletter(string $email = ''): void{
+
+
+        ///Registar o email na base de dados
+        $email = filter_input(INPUT_GET, 'newsletter', FILTER_VALIDATE_EMAIL);
+        if(isset($email))
+        {
+            try{
+                $news = (new NewsletterModel())->lista();
+                //Verificar se já existe na base de dados
+                foreach($news as $n){
+                    if($n->Email === $email){
+                        //Se existir, devolve uma mensagem
+                        echo "ERRO: O email já existe";
+                        return;
+                    }
+                }
+
+                //Se não existir, regista! :)
+                $result = (new NewsletterModel())->registarEmail($email);
+                if($result)
+                {
+
+                    echo "Email registado com sucesso";
+                }
+                return;
+            }
+            catch(\PODException $e)
+            {
+                echo "ERRO: O email já existe";
+                //return;
+            }
+        }
+        else{
+            echo "ERRO: Email Inválido!";
+        }
     }
 }
